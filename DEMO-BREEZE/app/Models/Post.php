@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Post extends Model
+{
+    use HasFactory;
+    // Tutti i campi che vogliamo siano abilitati al mass update
+    // protected $fillable = ['title', 'content', 'slug'];
+
+    // Tutti i campi che non vogliamo siano abilitati al mass update
+    protected $guarded = ['id'];
+}
