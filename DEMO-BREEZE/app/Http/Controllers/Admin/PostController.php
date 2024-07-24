@@ -47,8 +47,14 @@ class PostController extends Controller
         //Gestione Slug
         $data['slug'] = Str::of($data['title'])->slug();
 
+        $img_path = $request->hasFile('cover_image') ? $request->cover_image->store('uploads') : NULL;
+
+        // $img_path = $request->hasFile('cover_image') ? Storage::put('uploads', $data['cover_image']) : NULL;
+
+
+
         //Gestione immagine
-        $img_path = Storage::put('uploads', $data['cover_image']);
+        // $img_path = Storage::put('uploads', $data['cover_image']);
 
         $post = new Post();
 

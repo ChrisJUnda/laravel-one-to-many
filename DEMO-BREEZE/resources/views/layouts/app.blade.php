@@ -57,7 +57,7 @@
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('Posts') }}</a>
+                                <a class="nav-link" href="{{ route('admin.posts.index') }}">{{ __('Progetti') }}</a>
                             </li>
                         @endauth
 
