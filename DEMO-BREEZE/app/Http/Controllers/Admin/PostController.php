@@ -89,7 +89,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $types = Type::all();
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
     /**
@@ -100,6 +101,9 @@ class PostController extends Controller
         // dd($request->all());
 
         $data = $request->validated(); //se non validate,redirect a risorsa precedente
+
+
+
         $data['slug'] = Str::of($data['title'])->slug();
 
 
