@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -31,7 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+
+        $types = Type::all();
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -41,6 +44,8 @@ class PostController extends Controller
     {
         // dd($request->all());
         $data = $request->validated();
+
+        // dd($request->all());
 
 
 
@@ -62,6 +67,8 @@ class PostController extends Controller
         $post->content = $data['content'];
         $post->slug = $data['slug'];
         $post->cover_image = $img_path;
+        $post->type_id = $data['type_id'];
+        // $post->type_id = $request->input('type_id');
         $post->save();
         return redirect()->route('admin.posts.index')->with('message', 'Progetto creato correttamente');
         // $post->slug = Str::of($post->title)->slug();
